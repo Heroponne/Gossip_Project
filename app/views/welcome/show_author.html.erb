@@ -1,0 +1,8 @@
+<h1>Voici l'auteur n°<%= params[:user_id] %> : </h1>
+
+<p>Prénom : <%= User.find(params[:user_id]).first_name %></p>
+<p>Nom : <%= User.find(params[:user_id]).last_name %></p>
+<p>Âge : <%= User.find(params[:user_id]).age %></p>
+<p>Description : <%= User.find(params[:user_id]).description %></p>
+<p>email : <%= User.find(params[:user_id]).email %></p>
+<p>Ville : <%= User.find(params[:user_id]).city.name %></p>

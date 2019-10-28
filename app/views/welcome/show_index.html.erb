@@ -1,0 +1,13 @@
+<h1>Bienvenue <%= params[:user_entry] %> :) </h1>
+<p>Ici c'est notre super site de potins, il est chouette, non ?</p>
+<p>Voici la liste des auteurs de potins, ainsi que les titres respectifs :</p>
+<% Gossip.all.each do |gossip| %>
+  <div class="card" style="width: 18rem;">
+    <div class="card-body">
+      <h5 class="card-title">Titre : <%= gossip.title %></h5>
+      <h6 class="card-subtitle mb-2 text-muted">Prénom de l'auteur : <%= gossip.user.first_name %></h6>
+      <p class="card-text">Id du gossip: <%= gossip.id %></p>
+      <p>Clique <%= link_to "ici", gossip_path(gossip.id) %> pour voir le gossip !</p>
+    </div>
+  </div>
+<% end %>

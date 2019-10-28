@@ -1,0 +1,2 @@
+module StaticPages::TeamHelper
+end
