@@ -15,9 +15,8 @@
  */
 
 h1{
-	color: grey;
-	margin-left: 20px;
-	margin-top: 20px;
+	color: black;
+	margin: 20px;
 }
 
 a{
@@ -35,4 +34,20 @@ li{
 
 .card{
 	margin: 30px;
+}
+
+.jumbotron{
+	height: 500px;
+	background-image: url(gossip.jpg);
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+
+.lead{
+	color: white;
+}
+
+.display-3{
+	margin-top: 250px;
 }
