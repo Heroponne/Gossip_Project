@@ -12,6 +12,8 @@ Ruby version : 2.5.1
 
 * rails db:migrate
 
+* rails db:seed
+
 * rails s
 
 * et aller sur localhoast:3000/welcome/ton_prenom 
