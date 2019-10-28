@@ -7,7 +7,7 @@
       <h5 class="card-title">Titre : <%= gossip.title %></h5>
       <h6 class="card-subtitle mb-2 text-muted">Prénom de l'auteur : <%= gossip.user.first_name %></h6>
       <p class="card-text">Id du gossip: <%= gossip.id %></p>
-      <p>Clique <%= link_to "ici", gossip_path(gossip.id) %> pour voir le gossip !</p>
+      <p>Clique <%= link_to "ici", gossip_path(gossip.id) %> pour voir le gossip</p>
     </div>
   </div>
 <% end %>
