@@ -11,14 +11,34 @@ class GossipsController < ApplicationController
   end
 
   def create
-  	@gossip = Gossip.new(title: params[:title], content: params[:body], user: User.find(26))
+  	@gossip = Gossip.new(title: params[:title], content: params[:content], user: User.first)
 
   	if @gossip.save
-      render '/gossips/index'
+      render :index
   	else
-      render '/gossips/new'
+      render :new
       puts @gossip.errors.messages
   	end
+  end
+
+  def edit
+    @gossip = Gossip.find(params[:id])
+  end
+
+  def update
+    @gossip = Gossip.find(params[:id])
+    gossip_params = params.require(:gossip).permit(:title, :content)
+    if @gossip.update(gossip_params)
+      redirect_to gossips_path
+    else
+      render :edit
+    end
+  end
+
+  def destroy
+    @gossip = Gossip.find(params[:id])
+    @gossip.destroy
+    render :index
   end
 
   private
