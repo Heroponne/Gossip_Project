@@ -1,0 +1,19 @@
+<h1>Ville : <%= @city.name %></h1>
+
+<p>Voici la liste des potins dans cette ville :</p>
+<div class="card-deck">
+  <% @city.users.each do |user| %>
+    <% user.gossips.each do |gossip| %>
+      <div class="col-sm-4 mb-3">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Titre : <%= gossip.title %></h5>
+            <h6 class="card-subtitle mb-2 text-muted">Prénom de l'auteur : <%= gossip.user.first_name %></h6>
+            <p class="card-text">Gossip n°<%= gossip.id %></p>
+            <%= link_to "Consulter", gossip_path(gossip.id) %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  <% end %>
+</div>

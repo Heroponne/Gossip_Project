@@ -1,0 +1,9 @@
+<h1>Voici l'auteur n°<%= params[:id] %> : </h1>
+
+<p>Prénom : <%= @user.first_name %></p>
+<p>Nom : <%= @user.last_name %></p>
+<p>Description : <%= @user.description %></p>
+<p>email : <%= @user.email %></p>
+<p>Âge : <%= @user.age %></p>
+<p>Ville : <%= @user.city.name %></p>
+<p>Voir la ville de plus près : <%= link_to "ici", city_path(@user.city.id) %></p>
