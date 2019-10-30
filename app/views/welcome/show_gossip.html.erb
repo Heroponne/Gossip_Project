@@ -1,6 +1,0 @@
-<h1>Voici le Gossip n°<%= params[:gossip_id] %> ! </h1>
-
-<p>Auteur : <%= Gossip.find(params[:gossip_id]).user.first_name %> (Son lien <%= link_to "ici", author_path(Gossip.find(params[:gossip_id]).user.id) %>)</p>
-<p>Titre : <%= Gossip.find(params[:gossip_id]).title %></p>
-<p>Contenu : <%= Gossip.find(params[:gossip_id]).content %></p>
-<p>Date de création : <%= Gossip.find(params[:gossip_id]).created_at %></p>
