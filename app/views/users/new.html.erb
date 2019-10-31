@@ -1,0 +1,40 @@
+<html>
+  <body>
+    <h1>Crée ton profil !</h1>
+
+    <p>Remplis les champs suivants (les champs contenant * sont obligatoires) :</p>
+      <%= form_tag url_for(action: 'create'), method: 'post' do %>
+        <div class="form-group">
+          <%= label_tag 'Prénom * :' %>
+          <%= text_field_tag 'first_name', @first_name, class: 'form-control' %>
+        </div>
+        <div class="form-group">
+          <%= label_tag 'Nom * :' %>
+          <%= text_field_tag 'last_name', @last_name, class: 'form-control' %>
+        </div>
+        <div class="form-group">
+          <%= label_tag 'Description :' %>
+          <%= text_area_tag 'description', @description, class: 'form-control' %>
+        </div>
+        <div class="form-group">
+          <%= label_tag 'Email * :' %>
+          <%= text_field_tag 'email', @email, class: 'form-control' %>
+        </div>
+        <div class="form-group">
+          <%= label_tag 'Age :' %>
+          <%= text_field_tag 'age', @age, class: 'form-control' %>
+        </div>
+        <div class="form-group">
+          <%= label_tag 'Mot de passe * :' %>
+          <%= text_field_tag 'password', @password, class: 'form-control' %>
+        </div>
+        <div class="form-group">
+          <%= label_tag 'Confirmer le mot de passe * :' %>
+          <%= text_field_tag 'password_confirm', @password_confirm, class: 'form-control' %>
+        </div>
+        <div>
+          <%= submit_tag 'Créer le profil', class: "btn btn-primary" %>
+        </div>
+      <% end %>    
+  </body>
+</html>

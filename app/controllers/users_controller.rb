@@ -11,12 +11,18 @@ class UsersController < ApplicationController
 		
 	end
 
-	def create
-		
+	def new
 	end
 
-	def new
-		
+	def create
+  	  @user = User.new(first_name: params[:first_name], last_name: params[:last_name], age: params[:age], description: params[:description], email: params[:email], password: params[:password])
+
+  	  if @user.save
+        redirect_to gossips_path
+  	  else
+        render :new
+        puts @user.errors.messages
+  	  end
 	end
 
 	def destroy
