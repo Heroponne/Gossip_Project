@@ -16,6 +16,7 @@ class SessionsController < ApplicationController
 
   def destroy
     session.delete(:user_id)
+    flash[:success] = "Vous avez bien été déconnecté !"
     redirect_to '/gossips'
   end
 end

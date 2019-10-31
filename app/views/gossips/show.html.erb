@@ -12,8 +12,9 @@
   <% @gossip.comments.each do |comment| %>
       <div class="card">
         <div class="card-body">
-          <h6 class="card-subtitle mb-2 text-muted">Auteur : <%= comment.user.first_name %></h6>
+          <h6 class="card-subtitle mb-2 text-muted">Auteur : <%= comment.user.first_name %> <%= link_to "Son lien", user_path(comment.user.id) %></h6>
           <p class="card-text"><%= comment.content %></p>
+          <%= link_to "Modifier le commentaire", edit_gossip_comment_path(comment.id), class: "btn btn-success" %>
         </div>
       </div>
   <% end %>
