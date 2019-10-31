@@ -19,11 +19,11 @@ class UsersController < ApplicationController
 
   	  if @user.save
   	  	log_in(@user)
-        redirect_to gossips_path
+  	  	flash[:success] = "Utilisateur bien créé !"
+        redirect_to profile_path
   	  else
-  	  	flash[:danger] = 
+  	  	flash[:danger] = @user.errors.messages
         render :new
-        puts @user.errors.messages
   	  end
 	end
 

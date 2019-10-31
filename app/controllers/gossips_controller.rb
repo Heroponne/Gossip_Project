@@ -34,6 +34,7 @@ class GossipsController < ApplicationController
     @gossip = Gossip.find(params[:id])
     gossip_params = params.require(:gossip).permit(:title, :content)
     if @gossip.update(gossip_params)
+      flash[:success] = "Potin modifié !"
       redirect_to gossips_path
     else
       render :edit
@@ -43,6 +44,7 @@ class GossipsController < ApplicationController
   def destroy
     @gossip = Gossip.find(params[:id])
     @gossip.destroy
+    flash[:success] = "Potin supprimé !"
     render :index
   end
 

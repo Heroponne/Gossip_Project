@@ -11,8 +11,12 @@
 
 <!-- Si un potin vient d'être créé -->
 
-<%= flash[:danger] %>
-<%= flash[:success] %>
+<div class="alert alert-danger" role="alert">
+  <%= flash[:danger] %>
+</div>
+<div class="alert alert-success" role="alert">
+  <%= flash[:success] %>
+</div>
 
 <!-- Page d'accueil -->
 
