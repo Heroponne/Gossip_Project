@@ -6,6 +6,7 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+Comment.destroy_all
 PrivateMessage.destroy_all
 Subject.destroy_all
 Tag.destroy_all
@@ -23,7 +24,7 @@ end
 end
 
 20.times do
-  Gossip.create(title: Faker::Hacker.noun, content: Faker::Hacker.say_something_smart, user: User.all.sample)
+  Gossip.create(title: Faker::Movies::StarWars.planet, content: Faker::Movies::StarWars.quote, user: User.all.sample)
 end
 
 20.times do 
@@ -32,4 +33,8 @@ end
 
 5.times do
   PrivateMessage.create(content: Faker::ChuckNorris.fact, sender: User.all.sample, recipient: User.all.sample)
+end
+
+20.times do
+  Comment.create(content: Faker::Quote.most_interesting_man_in_the_world, user: User.all.sample, gossip: Gossip.all.sample)
 end

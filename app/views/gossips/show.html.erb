@@ -5,3 +5,15 @@
 <p>Contenu : <%= @gossip.content %></p>
 <p>Date de création : <%= @gossip.created_at %></p>
 <p>Ville de l'auteur : <%= link_to "ici", city_path(@gossip.user.city.id) %></p>
+<%= link_to "Commenter", new_gossip_comment_path(@gossip.id), class: "btn btn-primary" %>
+<br /><br />
+
+<p>Commentaires du potin :</p>
+  <% @gossip.comments.each do |comment| %>
+      <div class="card">
+        <div class="card-body">
+          <h6 class="card-subtitle mb-2 text-muted">Auteur : <%= comment.user.first_name %></h6>
+          <p class="card-text"><%= comment.content %></p>
+        </div>
+      </div>
+  <% end %>
