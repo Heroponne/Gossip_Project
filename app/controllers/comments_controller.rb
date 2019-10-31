@@ -1,4 +1,7 @@
 class CommentsController < ApplicationController
+
+  before_action :authenticate_user, only: [:new, :create]
+
   def index
   end
 
@@ -9,9 +12,10 @@ class CommentsController < ApplicationController
   end
 
   def create
-    @comment = Comment.new(content: params[:content], user: User.first, gossip: Gossip.find(params[:gossip_id]))
+    @comment = Comment.new(content: params[:content], user: current_user, gossip: Gossip.find(params[:gossip_id]))
     puts params.inspect
     if @comment.save
+      flash[:success] = "Commentaire ajouté !"
       redirect_to gossip_path(params[:gossip_id])
     else
       render :new
@@ -27,4 +31,14 @@ class CommentsController < ApplicationController
 
   def update
   end
+
+  private
+
+  def authenticate_user
+    unless current_user
+      flash[:danger] = "Merci de te connecter pour effectuer ceci !"
+      redirect_to new_session_path
+    end
+  end
+
 end

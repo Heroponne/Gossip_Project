@@ -1,4 +1,8 @@
 class GossipsController < ApplicationController
+
+  before_action :authenticate_user, only: [:new, :create]
+  before_action :authenticate_user_and_owner_of_gossip, only: [:edit, :update, :destroy]
+
   def index
   	@gossips = Gossip.all
   end
@@ -11,9 +15,10 @@ class GossipsController < ApplicationController
   end
 
   def create
-  	@gossip = Gossip.new(title: params[:title], content: params[:content], user: User.first)
+  	@gossip = Gossip.new(title: params[:title], content: params[:content], user: current_user)
 
   	if @gossip.save
+      flash[:success] = "Potin bien créé !"
       render :index
   	else
       render :new
@@ -43,7 +48,21 @@ class GossipsController < ApplicationController
 
   private
 
-  def post_params 
-  	params(:title, :content, user: User.find(26))
+# méthode qui eprmet de vérifier qu'on a l'utilisateur qui est log  
+  def authenticate_user
+    unless current_user
+      flash[:danger] = "Merci de te connecter pour effectuer ceci !"
+      redirect_to new_session_path
+    end
   end
+
+# méthode qui permet de vérifier qu'on a à la fois l'utilisateur qui est log et qu'il est bien auteur du gossip
+  def authenticate_user_and_owner_of_gossip
+    @gossip = Gossip.find(params[:id])
+    unless current_user && @gossip.user.id == current_user.id
+      flash[:danger] = "Vous ne pouvez pas modifier ou supprimer un potin que vous n'avez pas créé."
+      redirect_to gossips_path
+    end
+  end 
+
 end

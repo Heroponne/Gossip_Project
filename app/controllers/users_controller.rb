@@ -15,11 +15,13 @@ class UsersController < ApplicationController
 	end
 
 	def create
-  	  @user = User.new(first_name: params[:first_name], last_name: params[:last_name], age: params[:age], description: params[:description], email: params[:email], password: params[:password])
+  	  @user = User.new(first_name: params[:first_name], last_name: params[:last_name], age: params[:age], city: City.all.sample, description: params[:description], email: params[:email], password: params[:password])
 
   	  if @user.save
+  	  	log_in(@user)
         redirect_to gossips_path
   	  else
+  	  	flash[:danger] = 
         render :new
         puts @user.errors.messages
   	  end

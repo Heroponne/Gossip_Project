@@ -9,11 +9,10 @@
 
 <!-- Section -->
 
-<!-- Si un potin vient d'être crée -->
+<!-- Si un potin vient d'être créé -->
 
-<% if @gossip != nil %>
-  <p>Gossip enregistré :)</p>
-<% end %>
+<%= flash[:danger] %>
+<%= flash[:success] %>
 
 <!-- Page d'accueil -->
 
@@ -27,8 +26,10 @@
           <h6 class="card-subtitle mb-2 text-muted">Prénom de l'auteur : <%= gossip.user.first_name %></h6>
           <p class="card-text">Gossip n°<%= gossip.id %></p>
           <%= link_to "Consulter", gossip_path(gossip.id) %>
+          <% if current_user && gossip.user == current_user %>
           <%= link_to "Modifier le gossip", edit_gossip_path(gossip.id) %>
           <%= link_to "Supprimer", gossip_path(gossip.id), method: "delete", :data => {:confirm => 'Êtes-vous sûr ?'}, class: "btn btn-danger" %> 
+          <% end %>
         </div>
       </div>
     </div>

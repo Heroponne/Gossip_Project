@@ -7,5 +7,5 @@ class Gossip < ApplicationRecord
   belongs_to :user
   has_many :subjects
   has_many :tags, through: :subjects
-  has_many :comments
+  has_many :comments, dependent: :destroy
 end
